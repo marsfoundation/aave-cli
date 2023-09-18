@@ -1,5 +1,5 @@
 {
-  "name": "@bgd-labs/aave-cli",
+  "name": "@marsfoundation/aave-cli",
   "version": "0.0.23",
   "description": "A cli to perform various aave governance related tasks",
   "private": false,
@@ -11,14 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bgd-labs/report-engine.git"
+    "url": "git+https://github.com/marsfoundation/aave-cli.git"
   },
   "author": "BGD labs",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bgd-labs/report-engine/issues"
-  },
-  "homepage": "https://github.com/bgd-labs/report-engine#readme",
   "devDependencies": {
     "@types/node-fetch": "^2.6.4",
     "@types/object-hash": "^3.0.3",
