@@ -1,7 +1,7 @@
 import { formatUnits } from 'viem';
 import { AaveV3Reserve, CHAIN_ID } from './snapshot-types';
 
-export const getBlockExplorerLink = (chain_id: number) => {
+export const getBlockExplorerLink = (chain_id: CHAIN_ID) => {
   switch (chain_id) {
     case CHAIN_ID.MAINNET:
       return (address: string) => `[${address}](https://etherscan.io/address/${address})`
@@ -24,6 +24,7 @@ export const getBlockExplorerLink = (chain_id: number) => {
     case CHAIN_ID.BASE:
       return (address: string) => `[${address}](https://basescan.org/address/${address})`
     default:
+      chain_id satisfies never
       return (address: string) => `[${address}](Blockchain explorer address is undefined)`
   }
 }

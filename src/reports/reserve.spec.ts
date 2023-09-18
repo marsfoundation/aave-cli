@@ -86,6 +86,7 @@ describe('reserve', () => {
       Object.values(CHAIN_ID).forEach((chain_id) => testFor(chain_id))
     })
     it('should gracefully handle unknown chain ID', () => {
+      // @ts-expect-error
       expect(getBlockExplorerLink(123456789)(testAddress))
       .toBe(`[${testAddress}](Blockchain explorer address is undefined)`)
     })
