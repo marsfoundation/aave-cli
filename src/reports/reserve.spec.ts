@@ -88,7 +88,7 @@ describe('reserve', () => {
     it('should gracefully handle unknown chain ID', () => {
       // @ts-expect-error
       expect(getBlockExplorerLink(123456789)(testAddress))
-      .toBe(`[${testAddress}](Blockchain explorer address is undefined)`)
+      .toBe(testAddress)
     })
 
   })

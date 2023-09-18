@@ -25,7 +25,7 @@ export const getBlockExplorerLink = (chain_id: CHAIN_ID) => {
       return (address: string) => `[${address}](https://basescan.org/address/${address})`
     default:
       chain_id satisfies never
-      return (address: string) => `[${address}](Blockchain explorer address is undefined)`
+      return (address: string) => address
   }
 }
 
