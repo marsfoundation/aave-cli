@@ -20,3 +20,5 @@
 
 **Note**: currently nothing else is done in this script. You need to manually check the tenderly changes.
 In the future we plan to support seatbelt report generation from here.
+***
+*The IP in this repository was assigned to Mars SPC Limited in respect of the MarsOne SP*
