@@ -9,14 +9,6 @@ import { renderEmode, renderEmodeDiff } from './emode';
 export async function diffReports<A extends AaveV3Snapshot, B extends AaveV3Snapshot>(pre: A, post: B) {
   const chainId = pre.chainId;
   const diffResult = diff(pre, post);
-  // download interest rate strategies
-  // only downloads if it doesn't exist yet
-  for (const ir in pre.strategies) {
-    await fetchRateStrategyImage(pre.strategies[ir]);
-  }
-  for (const ir in post.strategies) {
-    await fetchRateStrategyImage(post.strategies[ir]);
-  }
 
   // create report
   let content = '';
@@ -32,7 +24,6 @@ export async function diffReports<A extends AaveV3Snapshot, B extends AaveV3Snap
           post.strategies[((diffResult.reserves[reserveKey] as any).to as AaveV3Reserve).interestRateStrategy]
         );
 
-        report += `| interestRate | ![ir](/.assets/${imageHash}.svg) |\n`;
         if (post.reserves[reserveKey].eModeCategory && post.reserves[reserveKey].eModeCategory != 0) {
           report += renderEmode(post.eModes[post.reserves[reserveKey].eModeCategory]);
         }
@@ -66,11 +57,6 @@ export async function diffReports<A extends AaveV3Snapshot, B extends AaveV3Snap
               post.strategies[(diffResult.reserves[reserveKey].interestRateStrategy as any).to]
             ) as any
           );
-          report += `| interestRate | ![before](/.assets/${hash(
-            pre.strategies[(diffResult.reserves[reserveKey].interestRateStrategy as any).from]
-          )}.svg) | ![after](/.assets/${hash(
-            post.strategies[(diffResult.reserves[reserveKey].interestRateStrategy as any).to]
-          )}.svg) |`;
         }
         if (diffResult.reserves[reserveKey].eModeCategory?.hasOwnProperty('from')) {
           report += renderEmodeDiff(
